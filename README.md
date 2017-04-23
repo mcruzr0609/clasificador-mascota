@@ -1,2 +1,32 @@
 # clasificador-mascota
-Clasificador de gatos y perros usando TensorFlow
+Clasificador de gatos y perros usando TensorFlow.
+
+Probado en OS Ubuntu 16.04 x64
+
+## Configuración
+```bash
+  sudo pip install virtualenv
+  virtualenv clasificador-mascota
+  cd clasificador-mascota
+  source bin/activate
+  pip install -r requirements.txt
+```
+
+## Entrenamiento
+El entrenamiento se realiza a partir del ejemplo de TensorFlow llamado retrian.py que entrena una red de convolución Inception-v3
+https://research.googleblog.com/2016/03/train-your-own-image-classifier-with.html
+
+Básicamente dentro de la carpeta data/mascotas creamos una carpeta con la categoría a clasificar e.g. gato y dentro de esta colocamos todas la imagenes relacionadas con esta.
+
+Para iniciar el entrenamiento ejecutamos el script train.sh, este crea dos archivos retrained_graph.pb y retrained_labels.txt
+```bash
+  chmod +x train.sh
+  ./trian.sh
+```
+
+## Clasificación
+El primer parámetro es la dirección de la imagen a clasificar.
+```bash
+  python src/classfier-2.1.py img/1.jpg
+```
+
