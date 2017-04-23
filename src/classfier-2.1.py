@@ -21,12 +21,12 @@ image_path = sys.argv[1]
 image_data = tf.gfile.FastGFile(image_path, 'rb').read()
 
 # carga el archivo de etiquetas
-label_lines = [line.rstrip() for line in tf.gfile.GFile("retrained_labels.txt")]
+label_lines = [line.rstrip() for line in tf.gfile.GFile("src/retrained_labels.txt")]
 
 # Umbral de prediccion
 threshold = 0.9
 
-with tf.gfile.FastGFile("retrained_graph.pb", 'rb') as f:
+with tf.gfile.FastGFile("src/retrained_graph.pb", 'rb') as f:
     graph_def = tf.GraphDef()
     graph_def.ParseFromString(f.read())
     _ = tf.import_graph_def(graph_def, name='')
